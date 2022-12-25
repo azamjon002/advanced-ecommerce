@@ -26,3 +26,5 @@ Route::middleware([
 });
 
 Route::get('/redirect', [\App\Http\Controllers\HomeController::class, 'redirect'])->name('redirect');
+
+Route::resource('category', '\App\Http\Controllers\CategoryController');
