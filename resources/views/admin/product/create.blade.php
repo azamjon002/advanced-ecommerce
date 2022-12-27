@@ -1,61 +1,60 @@
 @extends('admin.master')
 @section('content')
-    <div class="container m-5">
-      <div class="mt-5">
-          @if ($errors->any())
-              <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                          <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-              </div>
-          @endif
-              @if (session('message'))
-                  <div class="alert alert-success">
-                      {{ session('message') }}
-                  </div>
-              @endif
-      </div>
-        <form class="mt-5" action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group mb-3">
-                <label for="title">Product Title</label>
-                <input type="text" id="title" name="title" class="form-control" placeholder="Product Title">
-            </div>
-            <div class="form-group mb-3">
-                <label for="description">Product Description</label>
-                <textarea cols="30" rows="10" id="description" name="description" class="form-control" placeholder="Product Description"></textarea>
-            </div>
-            <div class="form-group mb-3">
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Quantity">
-            </div>
-            <div class="form-group mb-3">
-                <label for="price">Price</label>
-                <input type="number" id="price" name="price" class="form-control" placeholder="Price">
-            </div>
-            <div class="form-group mb-3">
-                <label for="discount_price">Dicount Price</label>
-                <input type="number" id="discount_price" name="discount_price" class="form-control" placeholder="Price">
-            </div>
-            <div class="form-group mb-3">
-                <label for="category_id">Category</label>
-                <select class="form-control" id="category_id" name="category_id">
-                    @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->category_name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group mb-3">
-                <label for="image">Image</label>
-                <div>
-                    <input type="file" id="image" name="image">
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <a href="{{route('product.index')}}" class="btn btn-warning float-right">Back</a>
+                    <form class="forms-sample mt-3" action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleInputName1">Title</label>
+                            <input type="text" class="form-control bg-black focus:bg-black text-white placeholder:text-white" name="title" id="exampleInputName1">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail3">Price</label>
+                            <input type="number" class="form-control bg-black focus:bg-black text-white placeholder:text-white" id="exampleInputEmail3" name="price" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword4">Discount Price</label>
+                            <input type="number" class="form-control bg-black focus:bg-black text-white placeholder:text-white" id="exampleInputPassword4" name="discount_price" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword5">Quantity</label>
+                            <input type="number" class="form-control bg-black focus:bg-black text-white placeholder:text-white" id="exampleInputPassword5" name="quantity" >
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleSelectGender">Category</label>
+                            <select class="form-control bg-black focus:bg-black text-white placeholder:text-white" name="category_id"  id="exampleSelectGender">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->category_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" name="image" class="form-control bg-black focus:bg-black text-white placeholder:text-white">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleTextarea1">Description</label>
+                            <textarea name="description" class="form-control bg-black focus:bg-black text-white placeholder:text-white" id="exampleTextarea1" rows="4">
+
+                            </textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mr-2">Save</button>
+                    </form>
                 </div>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
+        </div>
     </div>
 @endsection

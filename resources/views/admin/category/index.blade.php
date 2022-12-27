@@ -1,9 +1,8 @@
 @extends('admin.master')
 @section('content')
-    <div class="container m-5">
         <div class="row">
             <div class="col-12 grid-margin">
-                <div class="card mt-5">
+                <div class="card">
                     @if (session('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -28,10 +27,10 @@
                                         <td>{{$category->category_name}}</td>
                                         <td>
                                             <a href="{{route('category.edit',$category->id)}}" class="float-left mr-2 badge badge-outline-success">Edit</a>
-                                            <form action="{{route('category.destroy',$category->id)}}" method="POST">
+                                            <form action="{{route('category.destroy',$category->id)}}" onsubmit="return confirm('Are You Sure ?');" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class=" badge badge-outline-danger" onclick="alert('Aru you sure?')">Delete</button>
+                                                <button class=" badge badge-outline-danger" >Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -43,7 +42,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
 @endsection
 
 

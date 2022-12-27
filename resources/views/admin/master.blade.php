@@ -10,8 +10,12 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
+        <div class="main-panel">
         @include('admin.navbar')
-        @yield('content')
+            <div class="content-wrapper">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <!-- page-body-wrapper ends -->

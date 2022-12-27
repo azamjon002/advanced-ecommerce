@@ -1,9 +1,8 @@
 @extends('admin.master')
 @section('content')
-    <div class="container m-5">
         <div class="row">
             <div class="col-12 grid-margin">
-                <div class="card mt-5">
+                <div class="card">
                     @if (session('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -41,12 +40,12 @@
                                         <td>{{$product->quantity}}</td>
                                         <td>{{$category[0]->category_name}}</td>
                                         <td>
-                                            <a href="{{route('category.edit',$product->id)}}" class="float-left mr-2 badge badge-outline-success">Edit</a>
-                                            <a href="{{route('category.edit',$product->id)}}" class="float-left mr-2 badge badge-outline-primary">Show</a>
-                                            <form action="{{route('category.destroy',$product->id)}}" method="POST">
+                                            <a href="{{route('product.edit',$product->id)}}" class="float-left mr-2 badge badge-outline-success">Edit</a>
+                                            <a href="{{route('product.show',$product->id)}}" class="float-left mr-2 badge badge-outline-primary">Show</a>
+                                            <form action="{{route('product.destroy',$product->id)}}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class=" badge badge-outline-danger" onclick="alert('Aru you sure?')">Delete</button>
+                                                <button type="submit" class=" badge badge-outline-danger">Delete</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -58,7 +57,6 @@
                 </div>
             </div>
         </div>
-    </div>
 @endsection
 
 
