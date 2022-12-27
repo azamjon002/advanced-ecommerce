@@ -28,3 +28,5 @@ Route::middleware([
 Route::get('/redirect', [\App\Http\Controllers\HomeController::class, 'redirect'])->name('redirect');
 
 Route::resource('category', '\App\Http\Controllers\CategoryController');
+Route::resource('product', '\App\Http\Controllers\ProductController');
+//Route::post('product', [\App\Http\Controllers\ProductController::class, 'storeMedia'])->name('product.storeMedia');
