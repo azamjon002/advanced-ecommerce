@@ -29,4 +29,7 @@ Route::get('/redirect', [\App\Http\Controllers\HomeController::class, 'redirect'
 
 Route::resource('category', '\App\Http\Controllers\CategoryController');
 Route::resource('product', '\App\Http\Controllers\ProductController');
-//Route::post('product', [\App\Http\Controllers\ProductController::class, 'storeMedia'])->name('product.storeMedia');
+
+
+//Product for User
+Route::get('/product/details/{id}', [\App\Http\Controllers\HomeController::class, 'product_details'])->name('product_details');
